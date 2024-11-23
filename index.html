@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio de Animación</title>
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #1d1d1d;
+            color: #cc8787;
+            overflow-x: hidden;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #f4e3e8;
+        }
+
+        img, video {
+            max-width: 90%;
+            margin: 10px;
+            border-radius: 13px;
+            border: 3px solid #d88d97;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #5a3e48;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            color: #f4e3e8;
+            padding: 10px 20px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            background-color: #6d4958;
+            color: #ffffff;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 13px;
+        }
+
+        .navbar .logo span {
+            color: #f4e3e8;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 400%; 
+        }
+
+        .slide {
+            min-height: 100%;
+            width: 100%;
+            padding: 80px 20px 20px; 
+            box-sizing: border-box;
+            text-align: center;
+            background-color: #1d1d1d;
+            box-shadow: inset 0 0 10px #2e1e24;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            max-width: 100%;
+            justify-content: center;
+        }
+
+        .gallery img {
+            max-width: 150px;
+            max-height: 150px;
+            border: 3px solid #d88d97;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+        }
+
+        .modal {
+            display: none; 
+            position: fixed;
+            padding-top: 3%;
+            padding-left: 26%;
+            top: 0;
+            left: 0;
+            width: 25%;
+            height: 50%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+        }
+
+        .close-btn {
+            position: 100%;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            color: #ffffff;
+            background: #d88d97;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background: #c57782;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #5a3e48;
+            color: #f4e3e8;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #f4e3e8;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="Perfil P Foto.jpg" alt="Logo">
+            <span>Sebastián M Ramírez</span>
+        </div>
+        <div>
+            <a onclick="showSlide(0)">Motion Graphics</a>
+            <a onclick="showSlide(1)">Ilustraciones</a>
+            <a onclick="showSlide(2)">Animaciones</a>
+            <a onclick="showSlide(3)">Contacto</a>
+        </div>
+    </div>
+
+    <div class="slider" id="slider">
+        <div class="slide" id="Efectos-Visuales">
+            <h2>Parallax</h2>
+            <video controls>
+                <source src="Parallax _ Por Sebastián Martínez Ramírez.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="slide" id="Dibujos">
+            <h2>Mis Mejores Trabajos</h2>
+            <div class="gallery">
+                <img src="1.jpg" alt="Dibujo 1" onclick="openModal(this)">
+                <img src="13.png" alt="Dibujo 2" onclick="openModal(this)">
+                <img src="20.png" alt="Dibujo 3" onclick="openModal(this)">
+                <img src="10.png" alt="Dibujo 4" onclick="openModal(this)">
+                <img src="12.png" alt="Dibujo 5" onclick="openModal(this)">
+                <img src="8.png" alt="Dibujo 6" onclick="openModal(this)">
+                <img src="7.png" alt="Dibujo 7" onclick="openModal(this)">
+                <img src="2.jpg" alt="Dibujo 8" onclick="openModal(this)">
+                <img src="15.jpg" alt="Dibujo 9" onclick="openModal(this)">
+                <img src="7.jpg" alt="Dibujo 10" onclick="openModal(this)">
+                <img src="3.jpg" alt="Dibujo 11" onclick="openModal(this)">
+                <img src="4.jpg" alt="Dibujo 12" onclick="openModal(this)">
+            </div>
+        </div>
+
+        <div class="slide" id="Animaciones">
+            <h2>Animaciones</h2>
+            <video controls>
+                <source src="Tarea 3 La historia animada.mp4" type="video/mp4">
+            </video>
+            <video controls>
+                <source src="Tarea 1 Peso y Equilibrio_Sebastián Martínez Ramírez.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="slide" id="Contacto">
+            <h2>Contacto</h2>
+            <div class="contact-info">
+                <img src="Perfil P Foto.jpg" alt="Logo de Contacto">
+                <p>Si estas interesado en colaborar, no dudes en contactarme.</p>
+                <p>Correo: <a href="mailto:vfx.sebastian.m.r@gmail.com">vfx.sebastian.m.r@gmail.com</a></p>
+                <video controls>
+                    <source src="Demo reel.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+    <div class="modal" id="imageModal">
+        <button class="close-btn" onclick="closeModal()">X</button>
+        <img src="" alt="Imagen Ampliada">
+    </div>
+    </div>
+    <footer>
+        <a href="https://www.instagram.com/sebastian.m.ramirez/" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/@SebastianRamirez-jt2lz" target="_blank">YouTube</a>
+    </footer>
+    <script>
+        function showSlide(index) {
+            const slider = document.getElementById('slider');
+            const offset = index * -100;
+            slider.style.transform = `translateX(${offset}vw)`;
+        }
+
+        function openModal(image) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = modal.querySelector('img');
+            modalImg.src = image.src;
+            modal.style.display = 'flex'; 
+            modalImg.onload = function() {
+        if (modalImg.naturalWidth > window.innerWidth || modalImg.naturalHeight > window.innerHeight) {
+            modalImg.style.maxWidth = '90%';
+            modalImg.style.maxHeight = '90%';
+        }
+    };
+}
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none'; // Oculta el modal
+        }
+    </script>
+</body>
+</html>
